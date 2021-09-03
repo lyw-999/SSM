@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+    http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.0.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context-4.0.xsd
+    http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
+    http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd">
+
+
+<!-- 赋值-->
+ <bean id="teacher" class="spring09basicdi.Teacher">
+         <property name="name" value="谢总"></property>
+         <property name="age" value="19"></property>
+
+         <property name="friendName" >
+                 <list>
+                         <value>王总</value>
+                         <value>李总</value>
+                         <value>赵总</value>
+                         <value>张总</value>
+                 </list>
+         </property>
+
+         <property name="loverdName">
+                 <set>
+                         <value>girl</value>
+                         <value>girl</value>
+                         <value>girl</value>
+                         <value>girl</value>
+                 </set>
+         </property>
+
+         <property name="score">
+                 <map>
+                         <entry key="java" value="90">  </entry>
+                         <entry key="vue" value="80">  </entry>
+                         <entry key="jquery" value="70">  </entry>
+                 </map>
+         </property>
+
+         <property name="db">
+                 <props>
+                         <prop key="name">admin</prop>
+                         <prop key="pass">666</prop>
+                 </props>
+         </property>
+
+
+ </bean>
+
+        <!-- 取值 读取peoperties-->
+        <util:properties id="db" location="classpath:spring09basicdi/db.properties">
+
+        </util:properties>
+
+
+        <!--使用spring的el表达式读取bean的属性值-->
+<!--        <bean id="teacherEL" class="spring09basicdi.TeacherEL">-->
+<!--                <property name="name" value="#{teacher.name}"></property>-->
+<!--                <property name="age" value="#{teacher.age}"></property>-->
+<!--                <property name="loverName" value="#{teacher.loverName[2]}"></property>-->
+<!--                <property name="friendName" value="#{teacher.friendName[2]}"></property>-->
+<!--                <property name="score" value="#{teacher.scroe['java']}"></property>-->
+<!--                &lt;!&ndash;<property name="db" value="#{db['username']}"></property>&ndash;&gt;-->
+<!--                <property name="db" value="#{db.username}"></property>-->
+<!--        </bean>-->
+</beans>
