@@ -1,0 +1,11 @@
+package spring13zhujiedi;
+
+import org.springframework.stereotype.Repository;
+
+@Repository
+public class AdminDAO {
+
+    public void selectAll() {
+        System.out.println("我是dao层 我负责数据库查询全部");
+    }
+}
